@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+
+{% for posts in topic.posts %}
+
+        <ul id ="listMethod" class="uk-list uk-list-divider">
+            <li ><a href="#">{{post.text}}</a> 
+            <li id="italic">crée le {{posts.formattedDate('m-d-Y') }} à {{posts.formattedDate('H:i:s') }}</li>
+        </ul>
+
+{% endfor %}
+
+{% endblock %}

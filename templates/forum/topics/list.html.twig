@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+ {% block contenu %}
+
+
+{% for topic in topics %}
+        <ul id ="listMethod" class="uk-list uk-list-divider">
+            <li ><a href="{{path('topic_show', {'id':topic.id}) }}">{{topic.title}}</a> 
+            <a id="editButton" class="uk-button-small uk-button-secondary" href="{{path('edit_topic', {'id':topic.id}) }}"> Editer</a>
+            <a id="supprButton" class="uk-button-small uk-button-danger" href="#"> Supprimer  </a> </li>
+            <li id="italic">crée le {{topic.formattedDate('m-d-Y') }} à {{topic.formattedDate('H:i:s') }}</li>
+        </ul>
+
+       
+        {% endfor %}
+       
+<table>
+ {% endblock %}
+ 

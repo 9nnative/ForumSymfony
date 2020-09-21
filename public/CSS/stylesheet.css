@@ -1,0 +1,23 @@
+#topic_Title{
+    width: 435px;
+    height: 25px;
+    margin-left: 1em;
+}
+
+#listMethod{
+    margin : 1em;
+}
+
+#italic{
+    font-style: italic;
+}
+
+#editButton{
+    position: absolute;
+    right: 8em;
+}
+
+#supprButton{
+    position : absolute;
+    right: 1em;
+}

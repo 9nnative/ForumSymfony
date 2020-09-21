@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}           
+            <link rel="stylesheet" href="{{ asset('CSS/stylesheet.css') }}"/>    
+                    <!-- UIkit CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+                    <!-- UIkit JS -->
+            <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>          
+            <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+
+        {% endblock %}
+
+    </head>
+    <body>
+        <header>
+            <nav class="uk-navbar-container" uk-navbar >
+                <div class="uk-navbar-left">
+
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="{{ path('forum_home') }}">Acceuil</a></li>
+                    <li>
+                        <a href="#">Sujets</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="{{ path('list_topics') }}">Liste</a></li>
+                                <li><a href="{{ path('add_topic') }}">Ajouter un sujet</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Posts</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="">Posts les plus récents</a></li>
+                                <li><a href="">Ajouter un post</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                </div>
+                   <div class="uk-navbar-right">
+                       {% if app.user %}
+                        <ul class="uk-navbar-nav">
+                        <li>
+                        
+                        <a href="#"><span uk-icon="user"></span>&nbsp;{{ app.user.name }}</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href=""><span uk-icon="info"></span>&nbsp;Profil</a></li>
+                                <li><a href="{{ path('app_logout') }}"><span uk-icon="sign-out"></span>&nbsp;Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                       {% else %}
+                <ul class="uk-navbar-nav">
+                  <li class="uk-active"><a href="{{ path('app_login') }}">Connexion</a></li>
+                  <li class="uk-active"><a href={{ path('app_register') }}"">Inscription</a></li>
+                  {% endif %}
+               </ul> 
+               </div>  
+            </nav>
+        </header>
+            {% block body %} 
+                {% block contenu %}{% endblock %} 
+            {% endblock %}
+            
+            {% block javascripts %}{% endblock %}
+    </body>
+</html>
