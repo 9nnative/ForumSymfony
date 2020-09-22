@@ -7,7 +7,7 @@
         <ul id ="listMethod" class="uk-list uk-list-divider">
             <li ><a href="{{path('topic_show', {'id':topic.id}) }}">{{topic.title}}</a> 
             <a id="editButton" class="uk-button-small uk-button-secondary" href="{{path('edit_topic', {'id':topic.id}) }}"> Editer</a>
-            <a id="supprButton" class="uk-button-small uk-button-danger" href="#"> Supprimer  </a> </li>
+            <a id="supprButton" class="uk-button-small uk-button-danger" href="{{path('topic_delete', {'id':topic.id}) }}"> Supprimer  </a> </li>
             <li id="italic">crée le {{topic.formattedDate('m-d-Y') }} à {{topic.formattedDate('H:i:s') }}</li>
         </ul>
 

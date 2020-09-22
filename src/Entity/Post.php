@@ -25,7 +25,7 @@ class Post
     private $text;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
@@ -63,12 +63,17 @@ class Post
         return $this->date;
     }
 
+    public function getFormattedDate($format){
+        return $this->date->format($format);
+    }
+
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
         return $this;
     }
+
 
     public function getUser(): ?User
     {

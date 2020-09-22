@@ -12,6 +12,20 @@
                     <!-- UIkit JS -->
             <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>          
             <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+            <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({
+                    selector:'.tiny',
+                    setup: function (editor) {
+                        editor.on('change', function () {
+                            tinymce.triggerSave();
+                            protect: [
+                                /\<\/?(if|endif)\>/g,  // Protect <if> & </endif>
+                                /\<xsl\:[^>]+\>/g,  // Protect <xsl:...>
+                                /<\?php.*?\?>/g  // Protect php code
+                            ]
+                        });
+                    }
+                });</script>
 
         {% endblock %}
 
@@ -59,7 +73,7 @@
                        {% else %}
                 <ul class="uk-navbar-nav">
                   <li class="uk-active"><a href="{{ path('app_login') }}">Connexion</a></li>
-                  <li class="uk-active"><a href={{ path('app_register') }}"">Inscription</a></li>
+                  <li class="uk-active"><a href="{{ path('app_register') }}">Inscription</a></li>
                   {% endif %}
                </ul> 
                </div>  

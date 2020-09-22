@@ -2,11 +2,13 @@
 
 {% block contenu %}
 
-{% for posts in topic.posts %}
+{% for post in topic.posts %}
 
         <ul id ="listMethod" class="uk-list uk-list-divider">
-            <li ><a href="#">{{post.text}}</a> 
-            <li id="italic">crée le {{posts.formattedDate('m-d-Y') }} à {{posts.formattedDate('H:i:s') }}</li>
+            <li >{{post.text|raw}} 
+            <a id="supprButton" class="uk-button-small uk-button-danger" href ="{{path('post_delete', {'id':post.id}) }}"> Supprimer </a>
+            <a id="editButton" class="uk-button-small uk-button-primary" href="{{path('add_post', {'topic_id':topic.id}) }}"> Répondre </li></a> 
+            <li id="italic">crée le {{post.formattedDate('m-d-Y') }} à {{post.formattedDate('H:i:s') }}</li>
         </ul>
 
 {% endfor %}
